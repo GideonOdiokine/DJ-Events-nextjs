@@ -2,7 +2,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from "@/components/Layout";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import Link from "next/link";
 
 import { API_URL } from "@/config/index";
@@ -22,7 +22,7 @@ export default function AddEventPage() {
     e.preventDefault();
 
     const hasEmptyFields = Object.values(values).some(ele => ele === "")
-    if (hasEmptyFields) return toast.error("Please fill out all the fields")
+    if (hasEmptyFields) return toast.error("Please fill out all the fields");
 
     const res = await fetch(`${API_URL}/events`, {
       method: "POST",
@@ -36,8 +36,17 @@ export default function AddEventPage() {
       toast.error("Something went wrong!");
 
     } else {
-      const eve = await res.json()
-      console.log(eve)
+      const evt = await res.json()
+      console.log(evt)
+      toast.success("Submission success")
+      router.push(`/events/${evt.slug}`)
+      setValues({   name: "",
+      performers: "",
+      venue: "",
+      address: "",
+      date: "",
+      time: "",
+      description: "",})
     }
 
 
