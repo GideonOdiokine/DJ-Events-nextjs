@@ -32,6 +32,7 @@ export default function AddEventPage() {
       body: JSON.stringify(values)
     })
 
+    
     if (!res.ok) {
       toast.error("Something went wrong!");
 
