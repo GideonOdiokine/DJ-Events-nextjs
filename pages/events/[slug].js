@@ -16,7 +16,6 @@ export default function EventPage({ evt }) {
       const res = await fetch(`${API_URL}/events/${evt.id}`, {
         method: "DELETE",
       })
-
       const data = res.json();
       if (!res.ok) {
         toast.error(data.message)
