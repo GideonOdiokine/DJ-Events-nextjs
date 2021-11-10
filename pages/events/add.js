@@ -38,7 +38,7 @@ export default function AddEventPage() {
 
     } else {
       const evt = await res.json()
-      console.log(evt)
+
       toast.success("Submission success")
       router.push(`/events/${evt.slug}`)
       setValues({   name: "",
@@ -49,8 +49,6 @@ export default function AddEventPage() {
       time: "",
       description: "",})
     }
-
-
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;

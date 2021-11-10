@@ -1,12 +1,32 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Event.module.css";
+import router, { useRouter } from "next/router";
+
 
 export default function EventPage({ evt }) {
-  const deleteEvent = () => {
-    console.log("delete");
+
+  const deleteEvent = async (e) => {
+
+    if (confirm("Are You Sure")) {
+      const res = await fetch(`${API_URL}/events/${evt.id}`, {
+        method: "DELETE",
+      })
+
+      const data = res.json();
+      if (!res.ok) {
+        toast.error(data.message)
+      } else {
+        toast.success("Event has been deleted")
+        router.push('/events')
+        console.log(res)
+      }
+    }
+
   };
   return (
     <Layout>
@@ -19,6 +39,7 @@ export default function EventPage({ evt }) {
             Delete Event
           </a>
         </div>
+        <ToastContainer />
         <span>
           {new Date(evt.date).toLocaleDateString("en-US")} at {evt.time}
         </span>
@@ -37,7 +58,7 @@ export default function EventPage({ evt }) {
           </div>
         )}
         <h3>Performers:</h3>
-        <p>{evt.performer}</p>
+        <p>{evt.performers}</p>
         <h3>Decription</h3>
         <p>{evt.description}</p>
         <p>Venue: {evt.venue}</p>
