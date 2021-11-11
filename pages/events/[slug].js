@@ -12,7 +12,7 @@ export default function EventPage({ evt }) {
 
   const deleteEvent = async (e) => {
 
-    if (confirm("Are You Sure")) {
+    if (confirm("are you sure")) {
       const res = await fetch(`${API_URL}/events/${evt.id}`, {
         method: "DELETE",
       })
@@ -22,7 +22,6 @@ export default function EventPage({ evt }) {
       } else {
         toast.success("Event has been deleted")
         router.push('/events')
-        console.log(res)
       }
     }
 
