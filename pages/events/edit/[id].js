@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from "@/components/Layout";
@@ -8,15 +9,15 @@ import Link from "next/link";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
-export default function EditEventPage() {
+export default function EditEventPage({ evt }) {
     const [values, setValues] = useState({
-        name: "",
-        performers: "",
-        venue: "",
-        address: "",
-        date: "",
-        time: "",
-        description: "",
+        name: evt.name,
+        performers: evt.performers,
+        venue: evt.venue,
+        address: evt.address,
+        date: evt.date,
+        time: evt.time,
+        description: evt.description,
     });
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,7 +60,7 @@ export default function EditEventPage() {
     return (
         <Layout title="Add New Event">
             <Link href="/events">Go Back</Link>
-            <h1>Add Event</h1>
+            <h1>Edit Event</h1>
             <ToastContainer />
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.grid}>
@@ -109,7 +110,8 @@ export default function EditEventPage() {
                             type="date"
                             name="date"
                             id="date"
-                            value={values.date}
+                            value={moment(values.date).format('yyyy-MM-DD')}
+                            
                             onChange={handleInputChange}
                         />
                     </div>
@@ -136,8 +138,22 @@ export default function EditEventPage() {
                     ></textarea>
                 </div>
 
-                <input type="submit" value="Add Event" className="btn" />
+                <input type="submit" value="Update Event" className="btn" />
             </form>
         </Layout>
     );
+}
+
+export async function getServerSideProps({ params: { id } }) {
+
+
+    const res = await fetch(`${API_URL}/events/${id}`)
+    const evt = await res.json()
+
+    return {
+        props: {
+            evt,
+
+        },
+    }
 }
