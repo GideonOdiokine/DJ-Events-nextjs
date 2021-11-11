@@ -1,0 +1,76 @@
+{
+    "events":[
+        {
+            "id": 1,
+            "name": " Thursday With DJ Gideon Odiokine",
+            "slug":"throwback-thursday-odiokine",
+            "venue":"Crutech New Cafe",
+            "address":"No.5 JOE EKPO",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"With bands from around the UK ready to send the roof into orbit, get ready for the loudest Welsh festival: the inaugural UnMute 2021",            
+            "images":"/images/sample/event1.jpg"
+        },
+          {
+            "id": 2,
+            "name": " UnMute Rock Festival",
+            "slug":"unmute-rock-festival",
+            "venue":"Crutech New Cafe",
+            "address":"No. 22 Ekpo Abasi Calabar",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"This is a live show with Dj Rui on studio",
+            "images":"/images/sample/event2.jpg"
+        },
+          {
+            "id": 3,
+            "name": " Thursday Live Studio ",
+            "slug":"Thursday-Live-Studio",
+            "venue":"Crutech New Cafe",
+            "address":"No. 22 Ekpo Abasi Calabar",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"With bands from around the UK ready to send the roof into orbit, get ready for the loudest Welsh festival: the inaugural UnMute 2021",
+            "images":"/images/sample/event3.jpg"
+          },
+          {
+            "id": 4,
+            "name": " DJ HCM",
+            "slug":"go-to-school",
+            "venue":"Crutech New Cafe",
+            "address":"No. 22 Ekpo Abasi Calabar",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"With bands from around the UK ready to send the roof into orbit, get ready for the loudest Welsh festival: the inaugural UnMute 2021",
+            "images":"/images/sample/event4.jpg"
+          },
+          {
+            "id": 5,
+            "name": "cock",
+            "slug":"soul-kitchen-party",
+            "venue":"Crutech New Cafe",
+            "address":"No. 22 Ekpo Abasi Calabar",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"With bands from around the UK ready to send the roof into orbit, get ready for the loudest Welsh festival: the inaugural UnMute 2021",
+            "images":"/images/sample/event5.jpg"
+          },
+          {
+            "id": 6,
+            "name": " DJ Gideon Odiokine",
+            "slug":"throwback-thursday-with-dj-gideon-odiokine",
+            "venue":"Crutech New Cafe",
+            "address":"No. 22 Ekpo Abasi Calabar",
+            "performer":"DJ Gideon Odiokine",
+            "date": "September 01, 2021", 
+            "time":"10:00 PM EST",
+            "description":"With bands from around the UK ready to send the roof into orbit, get ready for the loudest Welsh festival: the inaugural UnMute 2021",
+            "images":"/images/sample/event6.jpg"
+          }
+        ]
+}
