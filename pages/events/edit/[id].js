@@ -10,6 +10,7 @@ import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
 export default function EditEventPage({ evt }) {
+    console.log(evt)
     const [values, setValues] = useState({
         name: evt.name,
         performers: evt.performers,
@@ -145,6 +146,12 @@ export default function EditEventPage({ evt }) {
             {imagePreview ? (
                 <Image src={imagePreview} alt="evt img" width={170} height={100} />
             ) : <h4>No Image Uploaded</h4>}
+
+            <div>
+                <button className="btn-secondary" >
+                    Set Image
+                </button>
+            </div>
         </Layout>
     );
 }
