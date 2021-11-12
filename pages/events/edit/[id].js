@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import Link from "next/link";
-
+import Image from 'next/image';
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
@@ -19,14 +19,15 @@ export default function EditEventPage({ evt }) {
         time: evt.time,
         description: evt.description,
     });
+    const [imagePreview, setImagePreview] = useState(evt.image ? evt.image.formats.thumbnail.url : null)
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const hasEmptyFields = Object.values(values).some(ele => ele === "")
         if (hasEmptyFields) return toast.error("Please fill out all the fields");
 
-        const res = await fetch(`${API_URL}/events`, {
-            method: "POST",
+        const res = await fetch(`${API_URL}/events/${evt.id}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -40,7 +41,7 @@ export default function EditEventPage({ evt }) {
         } else {
             const evt = await res.json()
 
-            toast.success("Submission success")
+            toast.success("Update successful")
             router.push(`/events/${evt.slug}`)
             setValues({
                 name: "",
@@ -111,7 +112,7 @@ export default function EditEventPage({ evt }) {
                             name="date"
                             id="date"
                             value={moment(values.date).format('yyyy-MM-DD')}
-                            
+
                             onChange={handleInputChange}
                         />
                     </div>
@@ -140,6 +141,10 @@ export default function EditEventPage({ evt }) {
 
                 <input type="submit" value="Update Event" className="btn" />
             </form>
+            <h2> Event Image</h2>
+            {imagePreview ? (
+                <Image src={imagePreview} alt="evt img" width={170} height={100} />
+            ) : <h4>No Image Uploaded</h4>}
         </Layout>
     );
 }

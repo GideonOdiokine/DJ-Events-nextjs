@@ -32,22 +32,24 @@ export default function AddEventPage() {
       body: JSON.stringify(values)
     })
 
-    
+
     if (!res.ok) {
       toast.error("Something went wrong!");
 
     } else {
       const evt = await res.json()
 
-      toast.success("Submission success")
+      toast.success("Submission successful")
       router.push(`/events/${evt.slug}`)
-      setValues({   name: "",
-      performers: "",
-      venue: "",
-      address: "",
-      date: "",
-      time: "",
-      description: "",})
+      setValues({
+        name: "",
+        performers: "",
+        venue: "",
+        address: "",
+        date: "",
+        time: "",
+        description: "",
+      })
     }
   };
   const handleInputChange = (e) => {
