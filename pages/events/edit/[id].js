@@ -12,7 +12,7 @@ import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
 export default function EditEventPage({ evt }) {
-   const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [values, setValues] = useState({
         name: evt.name,
         performers: evt.performers,
@@ -57,8 +57,10 @@ export default function EditEventPage({ evt }) {
             })
         }
     };
-    const imageUploaded=(e)=>{
-        console.log("upload")
+    const imageUploaded = async (e) => {
+        const res = await fetch(`${API_URL}/events/${evt.id}`);
+        const data = res.json();
+        setImagePreview(data.image.formats.thumbnail.url)
     }
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -153,11 +155,11 @@ export default function EditEventPage({ evt }) {
             ) : <h4>No Image Uploaded</h4>}
 
             <div>
-                <button onClick={()=>setShowModal(true)} className="btn-secondary" >
+                <button onClick={() => setShowModal(true)} className="btn-secondary" >
                     Set Image
                 </button>
             </div>
-            <Modal show={showModal} onClose={()=>setShowModal(false)}  >
+            <Modal show={showModal} onClose={() => setShowModal(false)}  >
                 <ImageUploaded EvtId={evt.id} imageUploaded={imageUploaded} />
             </Modal>
         </Layout>
