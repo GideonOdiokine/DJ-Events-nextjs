@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from "@/components/Layout";
 import Modal from "@/components/Modal";
+import ImageUploaded from "@/components/ImageUpload";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import Link from "next/link";
@@ -56,6 +57,9 @@ export default function EditEventPage({ evt }) {
             })
         }
     };
+    const imageUploaded=(e)=>{
+        console.log("upload")
+    }
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value });
@@ -154,7 +158,7 @@ export default function EditEventPage({ evt }) {
                 </button>
             </div>
             <Modal show={showModal} onClose={()=>setShowModal(false)}  >
-                IMAGE UPLOAD
+                <ImageUploaded EvtId={evt.id} imageUploaded={imageUploaded} />
             </Modal>
         </Layout>
     );
