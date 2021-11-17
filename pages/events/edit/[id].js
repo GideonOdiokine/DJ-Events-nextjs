@@ -2,6 +2,7 @@ import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from "@/components/Layout";
+import Modal from "@/components/Modal";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import Link from "next/link";
@@ -10,7 +11,7 @@ import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
 export default function EditEventPage({ evt }) {
-    console.log(evt)
+   const [showModal, setShowModal] = useState(false)
     const [values, setValues] = useState({
         name: evt.name,
         performers: evt.performers,
@@ -148,10 +149,13 @@ export default function EditEventPage({ evt }) {
             ) : <h4>No Image Uploaded</h4>}
 
             <div>
-                <button className="btn-secondary" >
+                <button onClick={()=>setShowModal(true)} className="btn-secondary" >
                     Set Image
                 </button>
             </div>
+            <Modal show={showModal} onClose={()=>setShowModal(false)}  >
+                IMAGE UPLOAD
+            </Modal>
         </Layout>
     );
 }
