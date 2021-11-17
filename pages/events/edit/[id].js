@@ -58,16 +58,19 @@ export default function EditEventPage({ evt }) {
         }
     };
     const imageUploaded = async (e) => {
-        const res = await fetch(`${API_URL}/events/${evt.id}`);
-        const data = res.json();
+        const res = await fetch(`${API_URL}/events/${evt.id}`)
+        const data = await res.json()
         setImagePreview(data.image.formats.thumbnail.url)
+        setShowModal(false)
+        // console.log(data)
     }
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value });
     };
     return (
-        <Layout title="Add New Event">
+        <Layout title="Edit Event">
             <Link href="/events">Go Back</Link>
             <h1>Edit Event</h1>
             <ToastContainer />
