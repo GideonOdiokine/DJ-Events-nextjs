@@ -9,6 +9,22 @@ import styles from '@/styles/AuthForm.module.css'
 
 
 export default function register() {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if (password !== passwordConfirm) {
+            toast.error("Password do not match");
+            return
+        }
+
+        console.log({ username, email, password })
+    }
+
     return (
         <Layout title='User Registration'>
             <div className={styles.auth}>
@@ -16,14 +32,14 @@ export default function register() {
                     <FaUser /> Register
                 </h1>
                 <ToastContainer />
-                <form >
+                <form onSubmit={handleSubmit} >
                     <div>
                         <label htmlFor='username'>Username</label>
                         <input
                             type='text'
                             id='username'
-                            // value={username}
-                        // onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div>
@@ -31,8 +47,8 @@ export default function register() {
                         <input
                             type='email'
                             id='email'
-                            // value={email}
-                        // onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div>
@@ -40,8 +56,8 @@ export default function register() {
                         <input
                             type='password'
                             id='password'
-                            // value={password}
-                        // onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <div>
@@ -49,8 +65,8 @@ export default function register() {
                         <input
                             type='password'
                             id='passwordConfirm'
-                            // value={passwordConfirm}
-                        // onChange={(e) => setPasswordConfirm(e.target.value)}
+                            value={passwordConfirm}
+                            onChange={(e) => setPasswordConfirm(e.target.value)}
                         />
                     </div>
 

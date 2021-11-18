@@ -14,7 +14,7 @@ export default function login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        console.log({ email, password })
     }
     return (
         <Layout title="User Login">
