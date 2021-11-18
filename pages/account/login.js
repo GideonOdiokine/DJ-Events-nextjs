@@ -9,9 +9,26 @@ import styles from '@/styles/AuthForm.module.css'
 
 
 export default function login() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     return (
-        <div>
-            Login
-        </div>
+        <Layout title="User Login">
+            <div className={styles.auth} >
+                <h1>
+                    <FaUser /> Log In
+                </h1>
+                <ToastContainer />
+                <form>
+                    <div>
+                        <label htmlFor="email">Email Address</label>
+                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                </form>
+            </div>
+        </Layout>
     )
 }
