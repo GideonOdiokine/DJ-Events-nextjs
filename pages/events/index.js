@@ -1,9 +1,11 @@
 import EventItem from "@/components/EventItem";
 import Layout from "@/components/Layout";
-import { API_URL } from "@/config/index";
+import Pagination from "@/components/Pagination";
+import { API_URL, PER_PAGE } from "@/config/index";
 
-const PER_PAGE = 2;
-export default function EventsPage({ events }) {
+
+export default function EventsPage({ events, total, page }) {
+
   return (
     <Layout>
       <h2> Events</h2>
@@ -11,6 +13,8 @@ export default function EventsPage({ events }) {
       {events.map((evt) => (
         <EventItem evt={evt} key={evt.id} />
       ))}
+
+      <Pagination total={total} page={page} />
     </Layout>
   );
 }
@@ -21,7 +25,7 @@ export async function getServerSideProps({ query: { page = 1 } }) {
 
   // Fetch total Event
   const totalRes = await fetch(`${API_URL}/events/count`);
-  const total = totalRes.json();
+  const total = await totalRes.json();
 
   // Fetch Events
   const res = await fetch(
