@@ -11,6 +11,11 @@ import styles from '@/styles/AuthForm.module.css'
 export default function login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
     return (
         <Layout title="User Login">
             <div className={styles.auth} >
@@ -18,7 +23,7 @@ export default function login() {
                     <FaUser /> Log In
                 </h1>
                 <ToastContainer />
-                <form>
+                <form onSubmit={handleSubmit} >
                     <div>
                         <label htmlFor="email">Email Address</label>
                         <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -27,7 +32,9 @@ export default function login() {
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
+                    <input type="submit" value="Login" className="btn" />
                 </form>
+                <p>Don't have an account? <Link href="/account/register">Register</Link> </p>
             </div>
         </Layout>
     )
