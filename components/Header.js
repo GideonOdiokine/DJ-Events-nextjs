@@ -25,7 +25,10 @@ export default function Header() {
                 <Link href="/events/add">Add Event</Link>
               </li>
               <li>
-                <button className="btn-secondary btn-icons" >< FaSignOutAlt />Logout</button>
+                <Link href="/events/add">Dashboard</Link>
+              </li>
+              <li>
+                <button onClick={() => logout()} className="btn-secondary btn-icons" >< FaSignOutAlt />Logout</button>
               </li>
             </>
           ) : (

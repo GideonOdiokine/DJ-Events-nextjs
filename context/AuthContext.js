@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const login = async ({ email: identifier, password }) => {
-        console.log(identifier, password)
+        console.log({ identifier, password })
     }
 
     const logout = () => {
