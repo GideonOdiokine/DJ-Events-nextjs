@@ -9,6 +9,7 @@ import router, { useRouter } from "next/router";
 
 
 export default function EventPage({ evt }) {
+  console.log(evt)
 
   const deleteEvent = async (e) => {
 
@@ -47,7 +48,7 @@ export default function EventPage({ evt }) {
             <Image
               src={
                 evt.image
-                  ? evt.image.formats.medium.url
+                  ? evt.image?.url || evt.image.formats.thumbnail.url
                   : "/images/event-default.png"
               }
               width={960}
