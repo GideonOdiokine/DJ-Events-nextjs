@@ -18,6 +18,7 @@ export default function register() {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("")
 
+    useEffect(() => error && toast.error(error))
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -78,7 +79,7 @@ export default function register() {
                 </form>
 
                 <p>
-                    Already have an account? <Link href='/account/login'>Login</Link>
+                    Already have an account? <Link href='/account/login'>Sign up</Link>
                 </p>
             </div>
         </Layout>
