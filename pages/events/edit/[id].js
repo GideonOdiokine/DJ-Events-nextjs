@@ -10,8 +10,10 @@ import Link from "next/link";
 import Image from 'next/image';
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
+import { parseCookies } from '@/helpers/index'
 
-export default function EditEventPage({ evt }) {
+
+export default function EditEventPage({ evt, }) {
     const [showModal, setShowModal] = useState(false)
     const [values, setValues] = useState({
         name: evt.name,
@@ -32,7 +34,8 @@ export default function EditEventPage({ evt }) {
         const res = await fetch(`${API_URL}/events/${evt.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(values)
         })
@@ -170,7 +173,7 @@ export default function EditEventPage({ evt }) {
 }
 
 export async function getServerSideProps({ params: { id }, req }) {
-
+    const { token } = parseCookies(req)
 
     const res = await fetch(`${API_URL}/events/${id}`)
     const evt = await res.json()
@@ -180,7 +183,18 @@ export async function getServerSideProps({ params: { id }, req }) {
     return {
         props: {
             evt,
-
+            token,
         },
     }
 }
+
+// export async function getServerSideProps({ req }) {
+
+
+
+//     return {
+//         props: {
+
+//         },
+//     }
+// }
