@@ -11,7 +11,7 @@ import AuthContext from '@/context/AuthContext'
 
 
 
-export default function login() {
+export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
