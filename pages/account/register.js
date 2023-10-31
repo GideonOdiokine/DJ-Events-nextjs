@@ -9,7 +9,7 @@ import AuthContext from '@/context/AuthContext'
 
 
 
-export default function register() {
+export default function Register() {
 
     const { register, error } = useContext(AuthContext)
 
